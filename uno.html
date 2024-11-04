@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tl3eb Ghdwa Uno</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: whitesmoke;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #e94d58;
+            margin: 15px 0;
+            transition: opacity 0.5s;
+        }
+
+        .gif {
+            width: 100%;
+            max-width: 300px;
+            transition: opacity 0.5s;
+        }
+
+        .btn-group {
+            margin-top: 50px;
+            position: relative;
+            height: 40px;
+        }
+
+        button {
+            width: 150px;
+            height: inherit;
+            color: white;
+            font-size: 1.2em;
+            border-radius: 30px;
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0 2px 4px gray;
+            border: 2px solid #e94d58;
+        }
+
+        button.yes-btn {
+            background: #e94d58;
+        }
+
+        button.no-btn {
+            background: #6c757d;
+            position: absolute;
+            top: 10px;
+            transition: all 0.5s;
+        }
+
+        .message {
+            font-size: 1.5em;
+            color: #e94d58;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h2 id="question">tl3eb ghdwa uno?</h2>
+        <img src="https://media.giphy.com/media/YQuzRsEVOSlwOIRFe1/giphy.gif" class="gif" id="gif" alt="UNO Reverse Card GIF">
+        <div class="btn-group">
+            <button class="yes-btn" onclick="showNewGif()">Yes</button>
+            <button class="no-btn" onclick="moveNoButton()">No</button>
+        </div>
+        <div class="message" id="message">roh t9ra</div>
+    </div>
+
+    <script>
+        function showNewGif() {
+            const gifElement = document.getElementById('gif');
+            const messageElement = document.getElementById('message');
+            const btnGroup = document.querySelector('.btn-group');
+            const question = document.getElementById('question');
+            
+            gifElement.style.opacity = 0;
+            question.style.opacity = 0;
+
+            setTimeout(() => {
+                gifElement.src = 'https://media.giphy.com/media/MYJT0jtwsBA9aGj0lQ/giphy.gif';
+                gifElement.style.opacity = 1;
+                messageElement.style.display = 'block';
+                btnGroup.style.display = 'none';
+                question.style.display = 'none';
+            }, 500);
+        }
+
+        function moveNoButton() {
+            const noButton = document.querySelector('.no-btn');
+            const wrapper = document.querySelector('.wrapper');
+            const maxX = wrapper.clientWidth - noButton.clientWidth;
+            const maxY = wrapper.clientHeight - noButton.clientHeight;
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            noButton.style.left = randomX + 'px';
+            noButton.style.top = randomY + 'px';
+        }
+    </script>
+</body>
+</html>
